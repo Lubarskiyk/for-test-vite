@@ -3,6 +3,8 @@ import glob from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import ViteWebfontDownload from 'vite-plugin-webfont-dl';
+import Inspect from 'vite-plugin-inspect';
+import { imagetools } from 'vite-imagetools';
 
 export default defineConfig(({ command }) => {
   return {
@@ -29,9 +31,11 @@ export default defineConfig(({ command }) => {
     plugins: [
       injectHTML(),
       FullReload(['./src/**/**.html']),
+      Inspect(),
       ViteWebfontDownload([
         'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&display=swap',
       ]),
+      imagetools(),
     ],
   };
 });
