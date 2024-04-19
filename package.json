@@ -1,11 +1,11 @@
 {
-  "name": "project-super318",
+  "name": "for-test-vite",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/project-super318/",
+    "build": "vite build --base=/for-test-vite/",
     "preview": "project-super318"
   },
   "devDependencies": {
