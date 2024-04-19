@@ -1,0 +1,104 @@
+body {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.29;
+  font-family: var(--font-family);
+  color: var(--main-text);
+  background-color: var(--main-text);
+}
+.wraper {
+  overflow: hidden;
+}
+.lock {
+  overflow: hidden;
+}
+.button {
+  font-size: 14px;
+  line-height: 1.29;
+  letter-spacing: -0.01em;
+  border-radius: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+.headline1 {
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.headline2 {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 48px;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.headline3 {
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+.container {
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 375px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .headline1 {
+    font-size: 76px;
+  }
+  .headline2 {
+    font-size: 64px;
+  }
+  .headline3 {
+    font-size: 32px;
+  }
+
+  .button {
+    font-size: 18px;
+    line-height: 1.11;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+  .headline2 {
+    font-size: 64px;
+  }
+}
