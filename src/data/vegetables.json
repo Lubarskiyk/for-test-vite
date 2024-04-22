@@ -1,0 +1,38 @@
+[
+  {
+    "name": "eggplant",
+    "price": 60,
+    "image_url": "/images/vegetables_img/eggplant.png",
+    "retina_url": "/images/vegetables_img/eggplant_2x.png"
+  },
+  {
+    "name": "leek",
+    "price": 50,
+    "image_url": "/images/vegetables_img/leek.png",
+    "retina_url": "/images/vegetables_img/leek_2x.png"
+  },
+  {
+    "name": "mushrooms",
+    "price": 70,
+    "image_url": "/images/vegetables_img/mushrooms.png",
+    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+  },
+  {
+    "name": "corn",
+    "price": 45,
+    "image_url": "/images/vegetables_img/corn.png",
+    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+  },
+  {
+    "name": "sweet potatoes",
+    "price": 30,
+    "image_url": "/images/vegetables_img/sweet_potatoes.png",
+    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+  },
+  {
+    "name": "carrot",
+    "price": 10,
+    "image_url": "/images/vegetables_img/carrot.png",
+    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+  }
+]

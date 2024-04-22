@@ -1,45 +1,80 @@
-// import srcsetAvif from '../example.jpg?w=500;700;900;1200&format=avif&as=srcset';
-// // do it a second time, but now as webp since safari can't display avif
-// import srcsetWebp from '../example.jpg?w=500;700;900;1200&format=webp&as=srcset';
-// // create a small placeholder and import its metadata
-// import {
-//   src as placeholder,
-//   width,
-//   height,
-// } from '../example.jpg?w=300&as=metadata';
-//   <!-- Now we can use our images -->
-//  <a
-//    href="https://github.com/JonasKruckenberg/imagetools/tree/main/docs"
-//    target="_blank"
-//  >
-//    Documentation
-//  </a>;
-//   <picture>
-//     <source srcset="${srcsetAvif}" type="image/avif"/>
-//     <source srcset="${srcsetWebp}" type="image/webp"/>
-//     <img
-//         src="${placeholder}"
-//         width="${width}"
-//         height="${height}"
-//         alt="Women Lying Near to a Multicolored Glass Window Close-up Photography"/>
-//   </picture>
-
-const vegetables = import.meta.glob('/images/vegetables_img/*', {
-  query: { format: 'avif', w: 100 },
+const vegetables = import.meta.glob('/images/vegetables_img/*.png', {
+  query: { format: 'avif;webp;png', as: 'picture' },
+  import: 'default',
+  eager: true,
 });
-console.log(vegetables);
 
-let vegetableHtml = '';
-for (let vegetable of Object.values(vegetables)) {
-  const import_statment = vegetable();
-  const url = (await import_statment).default;
-  vegetableHtml += `<li> <img src="${url}" /> </li>`;
+const requestURL = './data/vegetables.json';
+const request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+request.onload = function () {
+  const vegetablesJSON = request.response;
+  showVegetables(vegetablesJSON);
+};
+
+function imageVegetable(name, price, image_url, retina_url) {
+  for (const [imgFile, images] of Object.entries(vegetables)) {
+    if (imgFile === image_url) {
+      const avifUrl = images.sources['avif'].split(' ')[0];
+      const webpfUrl = images.sources['avif'].split(' ')[0];
+      const html = `<picture>
+	    <source srcset="${avifUrl}" type="image/avif"/>
+	    <source srcset="${webpfUrl}" type="image/webp"/>
+	    <img 
+	      src="${images.img['src']}"
+	        width="${images.img['w']}" 
+	       height="${images.img['h']}"
+	        alt="${image_url}"/>
+	  </picture>`;
+      return `<li class="li_stile"> 
+		<p>${name}</p>
+		<p>${price}</p>
+		${html} </li>`;
+    }
+  }
 }
 
-document.querySelector('#app').innerHTML = `
-  <h1>Hello Imagetools!</h1>
-   <p>Here are a few vegetables of Vite:</p>
-   <ul style="width:300px; margin: 50px auto">
-       ${vegetableHtml} 
-     </ul>
-`;
+function showVegetables(jsonObj) {
+  //   var section = document.querySelector('section');
+  const vegetables = jsonObj;
+  let vegetableHtml = '';
+
+  for (var i = 0; i < vegetables.length; i++) {
+    //  console.log(vegetables[i].name);
+    //  console.log(vegetables[i].price);
+    //  console.log(vegetables[i].image_url);
+    vegetableHtml += imageVegetable(
+      vegetables[i].name,
+      vegetables[i].price,
+      vegetables[i].image_url,
+      vegetables[i].retina_url
+    );
+
+    console.log(vegetableHtml);
+    //  var myArticle = document.createElement('article');
+    //  var myH2 = document.createElement('h2');
+    //  var myPara1 = document.createElement('p');
+    //  var myPara2 = document.createElement('p');
+    //  var myPara3 = document.createElement('p');
+    //  var myList = document.createElement('ul');
+    //  myH2.textContent = heroes[i].name;
+    //  myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+    //  myPara2.textContent = 'Age: ' + heroes[i].age;
+    //  myPara3.textContent = 'Superpowers:';
+    //  var superPowers = heroes[i].powers;
+    //  for (var j = 0; j < superPowers.length; j++) {
+    //    var listItem = document.createElement('li');
+    //    listItem.textContent = superPowers[j];
+    //    myList.appendChild(listItem);
+    //  }
+    //  myArticle.appendChild(myH2);
+    //  myArticle.appendChild(myPara1);
+    //  myArticle.appendChild(myPara2);
+    //  myArticle.appendChild(myPara3);
+    //  myArticle.appendChild(myList);
+    //  section.appendChild(myArticle);
+  }
+  document.querySelector('#app').innerHTML = `${vegetableHtml}`;
+}
