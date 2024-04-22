@@ -1,18 +1,21 @@
+import requestURL from '/data/vegetables.json';
+console.log(requestURL);
 const vegetables = import.meta.glob('/images/vegetables_img/*.png', {
   query: { format: 'avif;webp;png', as: 'picture' },
   import: 'default',
   eager: true,
 });
+showVegetables(requestURL);
+// const requestURL = '/data/vegetables.json';
 
-const requestURL = './data/vegetables.json';
-const request = new XMLHttpRequest();
-request.open('GET', requestURL);
-request.responseType = 'json';
-request.send();
-request.onload = function () {
-  const vegetablesJSON = request.response;
-  showVegetables(vegetablesJSON);
-};
+// const request = new XMLHttpRequest();
+// request.open('GET', requestURL);
+// request.responseType = 'json';
+// request.send();
+// request.onload = function () {
+//   const vegetablesJSON = request.response;
+//   showVegetables(vegetablesJSON);
+// };
 
 function imageVegetable(name, price, image_url, retina_url) {
   for (const [imgFile, images] of Object.entries(vegetables)) {
