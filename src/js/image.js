@@ -21,7 +21,7 @@ function imageVegetable(name, price, image_url, retina_url) {
   for (const [imgFile, images] of Object.entries(vegetables)) {
     if (imgFile === image_url) {
       const avifUrl = images.sources['avif'].split(' ')[0];
-      const webpfUrl = images.sources['avif'].split(' ')[0];
+      const webpfUrl = images.sources['webp'].split(' ')[0];
       const html = `<picture>
 	    <source srcset="${avifUrl}" type="image/avif"/>
 	    <source srcset="${webpfUrl}" type="image/webp"/>
