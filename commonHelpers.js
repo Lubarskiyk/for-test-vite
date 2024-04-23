@@ -8,6 +8,6 @@
 	        alt="${a}"/>
 	  </picture>`;return`<li class="veg-item"> 
 		<h3 class="veg-item-title headline3">${a}</h3>
-		<pclass="veg-item-text">${t} UAH / kg</pclass=>
+		<p class="veg-item-text">${t} UAH / kg</p>
 		${v} </li>`}function J(a){const t=a;let r="";for(var i=0;i<t.length;i++)r+=R(t[i].name,t[i].price,t[i].image_url,t[i].retina_url);document.querySelector("#vegetablelist").innerHTML=`${r}`}
 //# sourceMappingURL=commonHelpers.js.map
