@@ -48,11 +48,11 @@ function imageVegetable(name, price, image_url, retina_url) {
 	      src="${imgBase}"
 	        width="${imgW}" 
 	       height="${imgH}"
-	        alt="${image_url}"/>
+	        alt="${name}"/>
 	  </picture>`;
-  return `<li class="li_stile"> 
-		<p>${name}</p>
-		<p>${price}</p>
+  return `<li class="veg-item"> 
+		<h3 class="veg-item-title headline3">${name}</h3>
+		<pclass="veg-item-text">${price} UAH / kg</pclass=>
 		${html} </li>`;
 }
 
@@ -96,5 +96,5 @@ function showVegetables(jsonObj) {
     //  myArticle.appendChild(myList);
     //  section.appendChild(myArticle);
   }
-  document.querySelector('#app').innerHTML = `${vegetableHtml}`;
+  document.querySelector('#vegetablelist').innerHTML = `${vegetableHtml}`;
 }
