@@ -1,10 +1,10 @@
 import requestURL from '/data/vegetables.json';
-console.log(requestURL);
 const vegetables = import.meta.glob('/images/vegetables_img/*.png', {
   query: { format: 'avif;webp;png', as: 'picture' },
   import: 'default',
   eager: true,
 });
+console.log(vegetables);
 showVegetables(requestURL);
 // const requestURL = '/data/vegetables.json';
 
@@ -18,25 +18,42 @@ showVegetables(requestURL);
 // };
 
 function imageVegetable(name, price, image_url, retina_url) {
+  let avifUrl = '';
+  let webpfUrl = '';
+  let avifUrlRetina = '';
+  let webpUrlRetina = '';
+  let imgBase = '';
+  let imgW;
+  let imgH;
   for (const [imgFile, images] of Object.entries(vegetables)) {
     if (imgFile === image_url) {
-      const avifUrl = images.sources['avif'].split(' ')[0];
-      const webpfUrl = images.sources['webp'].split(' ')[0];
-      const html = `<picture>
-	    <source srcset="${avifUrl}" type="image/avif"/>
-	    <source srcset="${webpfUrl}" type="image/webp"/>
+      avifUrl = images.sources['avif'].split(' ')[0];
+      webpfUrl = images.sources['webp'].split(' ')[0];
+      imgBase = images.img['src'];
+      imgW = images.img['w'];
+      imgH = images.img['h'];
+    }
+    if (imgFile === retina_url) {
+      avifUrlRetina = images.sources['avif'].split(' ')[0];
+      webpUrlRetina = images.sources['webp'].split(' ')[0];
+      //  imgBase = images.img['src'];
+      //  imgW = images.img['w'];
+      //  imgH = images.img['h'];
+    }
+  }
+  const html = `<picture>
+	    <source srcset="${avifUrl} 1x,  ${avifUrlRetina} 2x" type="image/avif"/>
+	    <source srcset="${webpfUrl} 1x, ${webpUrlRetina} 2x" type="image/webp"/>
 	    <img 
-	      src="${images.img['src']}"
-	        width="${images.img['w']}" 
-	       height="${images.img['h']}"
+	      src="${imgBase}"
+	        width="${imgW}" 
+	       height="${imgH}"
 	        alt="${image_url}"/>
 	  </picture>`;
-      return `<li class="li_stile"> 
+  return `<li class="li_stile"> 
 		<p>${name}</p>
 		<p>${price}</p>
 		${html} </li>`;
-    }
-  }
 }
 
 function showVegetables(jsonObj) {

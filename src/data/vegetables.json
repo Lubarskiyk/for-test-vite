@@ -21,18 +21,18 @@
     "name": "corn",
     "price": 45,
     "image_url": "/images/vegetables_img/corn.png",
-    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+    "retina_url": "/images/vegetables_img/corn_2x.png"
   },
   {
     "name": "sweet potatoes",
     "price": 30,
     "image_url": "/images/vegetables_img/sweet_potatoes.png",
-    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+    "retina_url": "/images/vegetables_img/sweet_potatoes_2x.png"
   },
   {
     "name": "carrot",
     "price": 10,
     "image_url": "/images/vegetables_img/carrot.png",
-    "retina_url": "/images/vegetables_img/mushrooms_2x.png"
+    "retina_url": "/images/vegetables_img/carrot_2x.png"
   }
 ]
