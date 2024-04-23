@@ -38,8 +38,10 @@ function imageVegetable(name, price, image_url, retina_url) {
 	        alt="${name}"/>
 	  </picture>`;
   return `<li class="veg-item"> 
-		<h3 class="veg-item-title headline3">${name}</h3>
-		<p class="veg-item-text">${price} UAH / kg</p>
+		<div class="veg-title-wrap">
+			<h3 class="veg-item-title headline3">${name}</h3>
+			<p class="veg-item-text">${price} UAH / kg</p>
+		</div>
 		${html} </li>`;
 }
 
