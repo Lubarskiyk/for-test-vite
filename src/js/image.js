@@ -29,13 +29,13 @@ function imageVegetable(name, price, image_url, retina_url) {
     }
   }
   const html = `<picture>
-	    <source srcset="${avifUrl} 1x,  ${avifUrlRetina} 2x" type="image/avif"/>
+	    <source srcset="${avifUrl} 1x, ${avifUrlRetina} 2x" type="image/avif"/>
 	    <source srcset="${webpfUrl} 1x, ${webpUrlRetina} 2x" type="image/webp"/>
 	    <img 
 	      src="${imgBase}"
-	        width="${imgW}" 
-	       height="${imgH}"
-	        alt="${name}"/>
+	      width="${imgW}" 
+	      height="${imgH}"
+	      alt="${name}"/>
 	  </picture>`;
   return `<li class="veg-item"> 
 		<div class="veg-title-wrap">
